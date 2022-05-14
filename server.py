@@ -140,7 +140,7 @@ def main():
         print('Initializing websockets server on port %d' % WS_PORT)
         WebSocketWSGIHandler.http_version = '1.1'
         websocket_server = make_server(
-            'http://localhost/wscamera', WS_PORT,
+            'localhost/wscamera', WS_PORT,
             server_class=WSGIServer,
             handler_class=WebSocketWSGIRequestHandler,
             app=WebSocketWSGIApplication(handler_cls=StreamingWebSocket))
