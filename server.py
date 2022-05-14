@@ -26,7 +26,7 @@ from ws4py.server.wsgiutils import WebSocketWSGIApplication
 WIDTH = 640
 HEIGHT = 480
 FRAMERATE = 24
-HTTP_PORT = 8082
+HTTP_PORT = 8000
 WS_PORT = 8084
 COLOR = u'#444'
 BGCOLOR = u'#333'
@@ -43,15 +43,15 @@ class StreamingHttpHandler(BaseHTTPRequestHandler):
         self.do_GET()
 
     def do_GET(self):
-        if self.path == '/':
+        if self.path == '/camera/':
             self.send_response(301)
-            self.send_header('Location', '/index.html')
+            self.send_header('Location', '/camera/index.html')
             self.end_headers()
             return
-        elif self.path == '/jsmpg.js':
+        elif self.path == '/camera/jsmpg.js':
             content_type = 'application/javascript'
             content = self.server.jsmpg_content
-        elif self.path == '/index.html':
+        elif self.path == '/camera/index.html':
             content_type = 'text/html; charset=utf-8'
             tpl = Template(self.server.index_template)
             content = tpl.safe_substitute(dict(
