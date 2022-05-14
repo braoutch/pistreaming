@@ -89,7 +89,7 @@ with picamera.PiCamera(resolution='1280x720', framerate=24) as camera:
     camera.exposure_mode='night'
     camera.start_recording(output, format='mjpeg')
     try:
-        address = ('', 8766)
+        address = ('', 8000)
         server = StreamingServer(address, StreamingHandler)
         server.serve_forever()
     finally:
