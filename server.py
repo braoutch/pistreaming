@@ -23,8 +23,8 @@ from ws4py.server.wsgiutils import WebSocketWSGIApplication
 
 ###########################################
 # CONFIGURATION
-WIDTH = 640
-HEIGHT = 480
+WIDTH = 1280
+HEIGHT = 720
 FRAMERATE = 24
 HTTP_PORT = 8000
 WS_PORT = 8084
@@ -140,7 +140,7 @@ def main():
         print('Initializing websockets server on port %d' % WS_PORT)
         WebSocketWSGIHandler.http_version = '1.1'
         websocket_server = make_server(
-            '', WS_PORT,
+            'http://localhost/wscamera', WS_PORT,
             server_class=WSGIServer,
             handler_class=WebSocketWSGIRequestHandler,
             app=WebSocketWSGIApplication(handler_cls=StreamingWebSocket))
